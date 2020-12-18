@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848e53aad405d0f41856e2230698fe82, type: 3}
+  m_Name: PlanetFactory
+  m_EditorClassIdentifier: 
+  terrestrialDefault: {fileID: 8623850112065129020, guid: d366be2b9ed6aeb43923658856f430bf,
+    type: 3}
+  spaceStationDefault: {fileID: 1803750501659397194, guid: 2cec207634fe544428016516b574ba99,
+    type: 3}
+  gasGiantDefault: {fileID: 1811097113853426, guid: c99fcbfa04ada394087ab7a35ccf4f57,
+    type: 3}
+  moonDefault: {fileID: 7570571716671449715, guid: e35b54717cbda4647bd7aca3fd1775e2,
+    type: 3}
+  gasGiantSurfaces:
+  - {fileID: 2100000, guid: ad6b2e83ca5e683448fc6c89c072d7d3, type: 2}
+  - {fileID: 2100000, guid: ff085146a4cddd248b80e4b1a1a6a856, type: 2}
+  - {fileID: 2100000, guid: da0f634e46852594dbdd7acfabcb0561, type: 2}

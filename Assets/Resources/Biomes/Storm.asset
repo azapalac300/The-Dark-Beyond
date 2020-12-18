@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339e42bf94c920b48823cc3bfa9fe63b, type: 3}
+  m_Name: Storm
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeColorSettings
+  biomeResolution: {fileID: 11400000, guid: 7d4ab0ab4b9b8764f844d09b19fb0869, type: 2}
+  biomes:
+  - gradient:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 0.3207547, g: 0.3192417, b: 0.3192417, a: 1}
+      key2: {r: 0.111739054, g: 0.6855552, b: 0.764151, a: 0}
+      key3: {r: 0.46751517, g: 0.7641732, b: 0.9622642, a: 0}
+      key4: {r: 0.40703872, g: 0, b: 0.4528302, a: 0}
+      key5: {r: 0.6318891, g: 0, b: 0.6981132, a: 0}
+      key6: {r: 0.03574884, g: 0.0669156, b: 0.069529854, a: 0}
+      key7: {r: 0.40744036, g: 0.76265734, b: 0.7924528, a: 0}
+      ctime0: 0
+      ctime1: 7710
+      ctime2: 18504
+      ctime3: 23516
+      ctime4: 34310
+      ctime5: 44718
+      ctime6: 60331
+      ctime7: 65535
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 8
+      m_NumAlphaKeys: 2
