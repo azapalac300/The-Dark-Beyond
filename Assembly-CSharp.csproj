@@ -67,6 +67,7 @@
     <Compile Include="Assets\Effects\FireProjectile.cs" />
     <Compile Include="Assets\Effects\ShootLaser.cs" />
     <Compile Include="Assets\Enemy.cs" />
+    <Compile Include="Assets\Prefabs\Interior\Station\StationPart.cs" />
     <Compile Include="Assets\Resources\Biomes\BiomeColorSettings.cs" />
     <Compile Include="Assets\Resources\Biomes\BiomeResolution.cs" />
     <Compile Include="Assets\SCI-FI UI Pack Pro\SCI-FI UI Pack Pro V1\Resources_V1\Scripts\CircleSlider.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="Assets\Scripts\Player\Crewmember.cs" />
     <Compile Include="Assets\Scripts\Player\MovementInput.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerSpaceInput.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\ControlsData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\GameData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Items\ItemData.cs" />

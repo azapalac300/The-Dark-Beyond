@@ -59,8 +59,8 @@ public class Starmap : MonoBehaviour
         _despawnStarMarkerAction += DespawnStarMarkerLocal;
         _selectDestinationAction += SelectDestinationLocal;
 
-        PlayerInput.MapButtonPressed += () => Toggle();
-        PlayerInput.SelectButtonPressed += () => CheckMapSelection();
+        PlayerSpaceInput.MapButtonPressed += () => Toggle();
+        PlayerSpaceInput.SelectButtonPressed += () => CheckMapSelection();
         jumpTarget.SetActive(false);
         jumpButton.SetActive(false);
         gameObject.SetActive(false);
@@ -123,7 +123,7 @@ public class Starmap : MonoBehaviour
     {
         foreach(StarMarker starMarker in markerDict.Values)
         {
-            starMarker.CheckIfSelected(PlayerInput.cursorPosition);
+            starMarker.CheckIfSelected(PlayerSpaceInput.cursorPosition);
         }
     }
 

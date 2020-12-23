@@ -24,9 +24,9 @@ public class Ship : MonoBehaviour
 
         }
 
-        PlayerInput.PrimaryFired += () => FirePrimary();
+        PlayerSpaceInput.PrimaryFired += () => FirePrimary();
 
-        PlayerInput.SecondaryFired += () => FireSecondary();
+        PlayerSpaceInput.SecondaryFired += () => FireSecondary();
     }
 
 

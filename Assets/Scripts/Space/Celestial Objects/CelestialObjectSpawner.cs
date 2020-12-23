@@ -130,7 +130,7 @@ public class RandomQueue<T>
             items.Remove(items[randomIndex]);
         }
     }
-
+    
     public T Pop()
     {
      

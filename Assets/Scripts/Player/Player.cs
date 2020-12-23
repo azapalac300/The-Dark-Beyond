@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 
 
     public PlayerData data;
-    private PlayerInput input;
+    private PlayerSpaceInput input;
     private  Docking currentDock;
     public static Player instance;
     public  bool Docked { get { return currentDock != null; } }
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
   
         gameObject.SetActive(true);
 
-        input = GetComponent<PlayerInput>();
+        input = GetComponent<PlayerSpaceInput>();
 
         DockUI.uiState = DockUIState.traveling;
     }

@@ -40,7 +40,7 @@ public class GameControl : MonoBehaviour {
             Ground.SetActive(true);
         };
 
-        LoadSpace();
+        LoadInterior();
     }
 
     public static void LoadSpace()

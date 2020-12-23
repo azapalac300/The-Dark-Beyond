@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 //Handle events 
-public class PlayerInput : MonoBehaviour {
+public class PlayerSpaceInput : MonoBehaviour {
     public static bool A, B, X, Y, RT, LT, RB, LB;
 
     public ControlsData data;
