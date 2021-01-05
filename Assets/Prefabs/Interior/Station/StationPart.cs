@@ -57,8 +57,10 @@ public class StationPart : MonoBehaviour
 
     public void RemoveConnection(int index)
     {
-        
-        connections.Remove((RoomRotation)index);
+        if (connections.ContainsKey((RoomRotation)index)){
+            connections.Remove((RoomRotation)index);
+        }
+       
     }
 
     private void Awake()

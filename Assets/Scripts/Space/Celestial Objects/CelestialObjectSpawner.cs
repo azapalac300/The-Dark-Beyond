@@ -133,7 +133,7 @@ public class RandomQueue<T>
     
     public T Pop()
     {
-     
+
         randomIndex = Random.Range(0, items.Count);
         T b = items[randomIndex];
         
