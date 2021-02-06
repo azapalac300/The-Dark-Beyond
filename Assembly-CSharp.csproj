@@ -67,6 +67,8 @@
     <Compile Include="Assets\Effects\FireProjectile.cs" />
     <Compile Include="Assets\Effects\ShootLaser.cs" />
     <Compile Include="Assets\Enemy.cs" />
+    <Compile Include="Assets\InteriorDisplay.cs" />
+    <Compile Include="Assets\PlayerCombat.cs" />
     <Compile Include="Assets\Prefabs\Interior\Station\StationPart.cs" />
     <Compile Include="Assets\Resources\Biomes\BiomeColorSettings.cs" />
     <Compile Include="Assets\Resources\Biomes\BiomeResolution.cs" />
@@ -140,6 +142,7 @@
     <Compile Include="Assets\Space.cs" />
     <Compile Include="Assets\SpaceUI.cs" />
     <Compile Include="Assets\StarMarker.cs" />
+    <Compile Include="Assets\TurnBasedCombat.cs" />
     <None Include="Assets\Graphics\Shaders\Tutorial\My First Lighting Shader.shader" />
     <None Include="Assets\Graphics\Shaders\Tutorial\Triplanar Shader.shader" />
     <None Include="Assets\Graphics\Shaders\Tutorial\My Lighting.cginc" />

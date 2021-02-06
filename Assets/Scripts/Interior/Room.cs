@@ -7,15 +7,22 @@ public enum Direction
     A, B, C, D
 }
 
+public enum RoomType
+{
+    Standard, Refuel, Bar, PartShop
+}
 
 public class Room : MonoBehaviour
 {
 
     public List<Direction> availableDirections;
+    public bool centerFilled;
+    public RoomType roomType;
 
     // Start is called before the first frame update
     void Awake()
     {
+        roomType = RoomType.Standard;
         availableDirections = new List<Direction>() {
         Direction.A,
         Direction.B,
@@ -29,6 +36,7 @@ public class Room : MonoBehaviour
     {
         Vector3 spawnPosition = transform.position;
         Vector3 dir = Vector3.zero;
+
 
         switch (direction)
         {
@@ -75,6 +83,12 @@ public class Room : MonoBehaviour
 
         return d;
     }
+
+    public void MakeSpecialRoom()
+    {
+
+    }
+
 
     // Update is called once per frame
     void Update()
