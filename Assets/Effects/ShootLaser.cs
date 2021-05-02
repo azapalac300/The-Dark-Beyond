@@ -26,7 +26,7 @@ public class ShootLaser : WeaponEffect
         {
             if(hit.collider.tag == "Destructible")
             {
-                hit.collider.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                hit.collider.gameObject.GetComponent<Enemy>().TakeDamage(damage, DamageType.Ballistic);
             }
         }
     }

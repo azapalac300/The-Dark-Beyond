@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
     private PlayerSpaceInput input;
     private  Docking currentDock;
     public static Player instance;
+
+    public int credits;
     public  bool Docked { get { return currentDock != null; } }
 
     public  Vector3 Position
@@ -20,6 +22,11 @@ public class Player : MonoBehaviour {
     }
   
 
+    public void AddCredits(int creditsToAdd)
+    {
+        credits += creditsToAdd;
+
+    }
 
     private void Awake()
     {
@@ -45,10 +52,17 @@ public class Player : MonoBehaviour {
     }
 
 
+    private void HandleStatics()
+    {
 
+    }
 
     // Update is called once per frame
     void Update () {
+
+        HandleStatics();
+
+
 
         if (Docked) {
             HandleDocking();         
