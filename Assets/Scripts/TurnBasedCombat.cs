@@ -6,7 +6,6 @@ using System;
 
 public class TurnBasedCombat : MonoBehaviour
 {
-    public GameObject enemyPrefab;
 
     public Vector3 enemyPosition { get { return new Vector3(30, 0, 0); } }
 
@@ -86,12 +85,16 @@ public class TurnBasedCombat : MonoBehaviour
 
     public void PlayerTurnCompleted(int ap)
     {
+        player.IsCurrentTurn = false;
+        enemy.IsCurrentTurn = true;
         enemy.TakeTurn(ap);
     }
 
 
     public void EnemyTurnCompleted(int ap)
     {
+        enemy.IsCurrentTurn = false;
+        player.IsCurrentTurn = true;
         player.TakeTurn(ap);
     }
 
@@ -140,7 +143,7 @@ public class TurnBasedCombat : MonoBehaviour
     public void SetupEnemy()
     {
         enemyObject.SetActive(true);
-        Enemy newEnemy = enemyPrefab.GetComponent<Enemy>();
+        Enemy newEnemy = enemyObject.GetComponent<Enemy>();
         newEnemy.maxHP = _overworldEnemy.data.HP;
         enemy = newEnemy;
 
@@ -153,6 +156,8 @@ public class TurnBasedCombat : MonoBehaviour
     {
 
         //For now the player automatically goes first;
+        player.IsCurrentTurn = true;
+        enemy.IsCurrentTurn = false;
         player.TakeTurn(playerAP);
     }
 }

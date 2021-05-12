@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: ControlsData
   m_EditorClassIdentifier: 
   mapKey: 109
+  invKey: 105
+  journalKey: 106
+  charsKey: 99
+  shipKey: 112

@@ -12,7 +12,6 @@ public class ShipUI : MonoBehaviour
     public Image shieldMeter;
     public Image jumpFuelMeter;
 
-    
 
 
     // Start is called before the first frame update
@@ -65,4 +64,7 @@ public class ShipUI : MonoBehaviour
         }
 
     }
+
+
+   
 }

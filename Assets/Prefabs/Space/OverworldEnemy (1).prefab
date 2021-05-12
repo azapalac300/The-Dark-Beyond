@@ -62,6 +62,8 @@ MonoBehaviour:
   chaseRadius: 300
   engageRadius: 15
   moveSpeed: 50
+  LootPackPrefab: {fileID: 2285077902978803429, guid: 087bcba3f8e620346aa56dcd9d8a333d,
+    type: 3}
   data: {fileID: 11400000, guid: 9ed0e9707631ec143b1a80040db1ca7d, type: 2}
 --- !u!1001 &5226976418241792864
 PrefabInstance:

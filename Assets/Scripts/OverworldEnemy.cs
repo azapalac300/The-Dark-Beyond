@@ -3,37 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+
 public class OverworldEnemy : MonoBehaviour
 {
-    public Player player;
 
-    public float chaseRadius;
-
-    public float engageRadius;
-
-    public float moveSpeed;
+    public GameObject LootPackPrefab;
 
 
-    Vector3 origPosition;
+    private Player player;
 
     public EnemyData data;
 
-    public static Action<OverworldEnemy> SetupCombat;
-
-    private float DistToPlayer {  get { return Vector3.Distance(transform.position, player.transform.position); } }
-
-    private float DistToOrig { get { return Vector3.Distance(transform.position, origPosition); } }
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-
-
-        origPosition = transform.position;
-
-        moveSpeed = data.overworldSpeed;
-        chaseRadius = data.chaseRadius;
 
     }
 
@@ -41,46 +27,23 @@ public class OverworldEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleChase();
+       // HandleChase();
     }
 
-    public void HandleChase()
-    {
-
-        if ((DistToPlayer > chaseRadius || DistToOrig >= chaseRadius * 2) && DistToOrig > engageRadius)
-        {
-
-
-            Vector3 delta = (origPosition - transform.position);
-             delta = delta.normalized;
-
-            transform.Translate(delta * moveSpeed * Time.deltaTime);    
-
-            return;
-        }
-
-        if (DistToPlayer <= chaseRadius)
-        {
-            //move towards player
-            Vector3 delta = (player.transform.position - transform.position).normalized;
-
-            transform.Translate(delta * moveSpeed * Time.deltaTime);
-
-        }
-
-
-        if (DistToPlayer <= engageRadius)
-        {
-            TurnBasedCombat.SetupCombat(this);
-            GameControl.LoadCombat();
-           
-        }
-
-    }
+  
 
     public void DropLoot()
     {
-        //Do some other stuff
+
+        for (int i = 0; i < data.lootAmount; i++) {
+
+            Vector3 spawnPoint = (UnityEngine.Random.insideUnitSphere * data.lootSpawnRadius) + transform.position;
+            LootPack lootPack = Instantiate(LootPackPrefab, spawnPoint, Quaternion.identity).GetComponent<LootPack>();
+            Rarity rarity = ItemData.RollRarity(data.value, data.canDropExotic, data.canDropLegendary);
+
+            lootPack.Initialize(rarity);
+        }
+
         player.AddCredits(data.bounty);
         Destroy(gameObject);
     }

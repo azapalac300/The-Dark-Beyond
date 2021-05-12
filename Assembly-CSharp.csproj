@@ -110,6 +110,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\EnemyData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\GameData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Items\ItemData.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Items\LootPack.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\PlanetFactory.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\PlayerData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Ships\Hull.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\SpaceObjectFactory.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TerrainData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TerrestrialGradients.cs" />
+    <Compile Include="Assets\Scripts\ShipInventory.cs" />
     <Compile Include="Assets\Scripts\ShipUI.cs" />
     <Compile Include="Assets\Scripts\Space.cs" />
     <Compile Include="Assets\Scripts\Space\Celestial Objects\CelestialObject.cs" />
@@ -144,7 +146,9 @@
     <Compile Include="Assets\Scripts\Space\Planet Generation\PlanetSkeleton.cs" />
     <Compile Include="Assets\Scripts\Space\Planet Generation\TerrestrialPlanet.cs" />
     <Compile Include="Assets\Scripts\Space\Planet Generation\Vertex.cs" />
+    <Compile Include="Assets\Scripts\Space\TestBehavior.cs" />
     <Compile Include="Assets\Scripts\Space\UI\DockUI.cs" />
+    <Compile Include="Assets\Scripts\Space\UI\HandleShortcuts.cs" />
     <Compile Include="Assets\Scripts\Space\UI\Starmap.cs" />
     <Compile Include="Assets\Scripts\SpaceUI.cs" />
     <Compile Include="Assets\Scripts\StarMarker.cs" />

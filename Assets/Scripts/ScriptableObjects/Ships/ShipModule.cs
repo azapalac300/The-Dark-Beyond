@@ -11,11 +11,6 @@ public enum ShipModuleType
     Hull,
     Shields,
     Bridge,
-    PrimaryWeapon,
-    SecondaryWeapon,
-    Ability0,
-    Ability1,
-    Ability2
 
 }
 

@@ -6,7 +6,7 @@ using System;
 
 public class Enemy : MonoBehaviour, Combatant
 {
-    
+    #region variables
     public int maxHP;
     public int currHP;
     public Image hpBar;
@@ -16,9 +16,12 @@ public class Enemy : MonoBehaviour, Combatant
     public float beamTimer;
 
     private const float gapDelta = 0.2f;
+
+    
+
     private float gapTimeLimit;
 
-   private float gapTimer;
+    private float gapTimer;
     //____________________
 
     public LineRenderer beam;
@@ -26,12 +29,12 @@ public class Enemy : MonoBehaviour, Combatant
     public int damage;
     public int actionPoints;
 
-   public bool IsCurrentTurn { get; private set; }
+    public bool IsCurrentTurn { get; set; }
 
     public event Action TurnComplete;
     public event Action Destroyed;
 
-    public PlayerCombat playerCombat;
+     #endregion
 
     private bool Shooting {  get { return beamTimer > 0 || gapTimer > 0; } }
 
@@ -39,6 +42,7 @@ public class Enemy : MonoBehaviour, Combatant
     void Start()
     {
         beamTimer = 0;
+      
         currHP = maxHP;
         hpBar = GameObject.Find("EnemyHP").GetComponent<Image>();
         gapTimeLimit = beamTimeLimit + gapDelta;
@@ -81,7 +85,6 @@ public class Enemy : MonoBehaviour, Combatant
         {
             if (actionPoints == 0)
             {
-                IsCurrentTurn = false;
                 TurnComplete?.Invoke();
             }else
             {
@@ -123,7 +126,8 @@ public class Enemy : MonoBehaviour, Combatant
 
         if (Physics.Raycast(ray, out hit))
         {
-            hit.collider.gameObject.GetComponentInParent<Combatant>().TakeDamage(damage, DamageType.Ballistic);
+            GameObject hitObject = hit.collider.gameObject;
+            hitObject.GetComponentInParent<Combatant>().TakeDamage(damage, DamageType.Ballistic);
         }
 
         beamTimer = beamTimeLimit;
@@ -132,8 +136,8 @@ public class Enemy : MonoBehaviour, Combatant
 
     public void TakeTurn(int actionPoints)
     {
-        IsCurrentTurn = true;
         this.actionPoints = actionPoints;
+        gapTimeLimit = beamTimeLimit + gapDelta;
         gapTimer = gapTimeLimit/2;
     }
 

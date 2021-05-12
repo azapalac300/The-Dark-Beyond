@@ -4,11 +4,9 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    PrimaryWeapon = ShipModuleType.PrimaryWeapon,
-    SecondaryWeapon = ShipModuleType.SecondaryWeapon,
-    Ability0 = ShipModuleType.Ability0,
-    Ability1 = ShipModuleType.Ability1,
-    Ability2 = ShipModuleType.Ability2
+    PrimaryWeapon,
+    SecondaryWeapon,
+    Ability
 }
 
 
@@ -23,11 +21,9 @@ public class WeaponEffect: MonoBehaviour
 }
 
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "Modules/ShipModules/Weapon")]
-public class Weapon : ShipModule
+//[CreateAssetMenu(fileName = "Weapon", menuName = "Modules/ShipModules/Weapon")]
+public class Weapon
 {
-    public override ShipModuleType Type { get { return (ShipModuleType)weaponType; } }
-
     
     public WeaponType weaponType;
 
@@ -41,7 +37,7 @@ public class Weapon : ShipModule
    
 
     // Update is called once per frame
-    public override void UpdateModule()
+    public virtual void UpdateWeapon()
     {
         if(cooldownTimer > 0)
         {

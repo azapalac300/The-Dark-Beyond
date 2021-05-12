@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+
 public class GameData{
     public static float PlayRadius
     {
@@ -58,6 +60,8 @@ public class GameData{
         return (dec - 1) * 100;
     }
 
+
+   
 
 }
 

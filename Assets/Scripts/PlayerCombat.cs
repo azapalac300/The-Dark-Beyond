@@ -19,7 +19,8 @@ public interface Combatant
 
     event Action Destroyed;
 
-    bool IsCurrentTurn { get; }
+    bool IsCurrentTurn { get; set; }
+    
 
     void TakeDamage(int damageAmount, DamageType damageType);
 }
@@ -41,7 +42,7 @@ public class PlayerCombat : MonoBehaviour, Combatant
 
     public int damage;
 
-    public bool IsCurrentTurn { get; private set; }
+    public bool IsCurrentTurn { get; set; }
     public event Action TurnComplete;
     public event Action Destroyed;
     // Start is called before the first frame update
@@ -78,8 +79,9 @@ public class PlayerCombat : MonoBehaviour, Combatant
 
         if(actionPoints == 0 && IsCurrentTurn && beamTimer <= 0)
         {
-            TurnComplete?.Invoke();
+            
             IsCurrentTurn = false;
+            TurnComplete?.Invoke();
         }
     }
 
@@ -117,7 +119,6 @@ public class PlayerCombat : MonoBehaviour, Combatant
     public void TakeTurn(int actionPoints)
     {
         this.actionPoints = actionPoints;
-        IsCurrentTurn = true;
     }
     
 

@@ -12,9 +12,14 @@ public class Ship : MonoBehaviour
 
     public List<ShipModule> modules;
 
+    [Space(10)]
+    public Weapon primary, secondary, ability1, ability2, ability3;
+    private Weapon[] weapons { get { return new Weapon[]{ primary, secondary, ability1, ability2, ability3 }; } }
+
     // Start is called before the first frame update
     void Start()
     {
+
         Starmap.JumpEvent += JumpTo;
         ModuleDict = new Dictionary<ShipModuleType, ShipModule>();
 
@@ -23,6 +28,9 @@ public class Ship : MonoBehaviour
             ModuleDict.Add(modules[i].Type, modules[i]);
 
         }
+
+        
+
 
         PlayerSpaceInput.PrimaryFired += () => FirePrimary();
 
@@ -74,6 +82,11 @@ public class Ship : MonoBehaviour
         {
             module.UpdateModule();
         }
+
+        foreach(Weapon weapon in weapons)
+        {
+            weapon?.UpdateWeapon();
+        }
     }
    
     public void JumpTo(Vector3 destination)
@@ -86,21 +99,23 @@ public class Ship : MonoBehaviour
 
     public void FirePrimary()
     {
-        if (HasModule(ShipModuleType.PrimaryWeapon))
+        if (primary != null)
         {
-            ((Weapon)GetModule(ShipModuleType.PrimaryWeapon)).Fire(gameObject);
+            primary.Fire(gameObject);
 
         }
     }
 
     public void FireSecondary()
     {
-        if (HasModule(ShipModuleType.SecondaryWeapon))
+        if (secondary != null)
         {
-            ((Weapon)GetModule(ShipModuleType.SecondaryWeapon)).Fire(gameObject);
+            secondary.Fire(gameObject);
         }
     }
 
+
+  
     //Et cetera
 
 

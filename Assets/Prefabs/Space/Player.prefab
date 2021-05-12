@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 124841964364097666}
   - component: {fileID: 45019888380162200}
   - component: {fileID: 81898087618633940}
-  m_Layer: 0
+  - component: {fileID: 1015403321}
+  m_Layer: 8
   m_Name: PlayerCamera
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 10000
+  far clip plane: 16000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -102,6 +103,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558439880115776}
   m_Enabled: 1
+--- !u!114 &1015403321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558439880115776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1784629516372132
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +145,8 @@ GameObject:
   - component: {fileID: 4560417723590332}
   - component: {fileID: 114481068306527474}
   - component: {fileID: 2076366148}
-  m_Layer: 0
+  - component: {fileID: 18677735}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -164,7 +197,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5f2377869bde24ba77437037c3deb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: fdab229611534f34eabab0616d1f058a, type: 2}
+--- !u!114 &18677735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784629516372132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a181393fc1d6848869febd532c283b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentShip: {fileID: 0}
+  modules:
+  - {fileID: 11400000, guid: 8cf07044b8c2fce459a63bedd24ef733, type: 2}
+  - {fileID: 11400000, guid: f7b62ca87a7ea6f4abc2df380e911de5, type: 2}
+  - {fileID: 11400000, guid: 7899835cb370e204185b008a36a96ed6, type: 2}
+  - {fileID: 11400000, guid: ca467ca0d5290d044bce8b769b8a8889, type: 2}
 --- !u!1 &6365115534206948771
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +227,8 @@ GameObject:
   - component: {fileID: 6365115534207240579}
   - component: {fileID: 6365115534203816355}
   - component: {fileID: 6365115534204947299}
-  m_Layer: 0
+  - component: {fileID: 1028901227}
+  m_Layer: 8
   m_Name: SM_Ship_Fighter_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +275,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d6bbd080a39b4854096c1041d680d666, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -244,3 +296,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1028901227
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365115534206948771}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 56e95c9f463de394d85a3e2b82792d3a, type: 3}

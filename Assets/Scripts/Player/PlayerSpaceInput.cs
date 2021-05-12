@@ -8,7 +8,14 @@ public class PlayerSpaceInput : MonoBehaviour {
     public static bool A, B, X, Y, RT, LT, RB, LB;
 
     public ControlsData data;
-    public static event Action MapButtonPressed;
+
+    //UI actions
+    public static Action MapButtonPressed;
+    public static Action InventoryButtonPressed;
+    public static Action JournalButtonPressed;
+    public static Action CharactersButtonPressed;
+    public static Action ShipButtonPressed;
+
     public static event Action SelectButtonPressed;
 
     public static event Action PrimaryFired;
@@ -54,6 +61,15 @@ public class PlayerSpaceInput : MonoBehaviour {
             MapButtonPressed?.Invoke();
         }
     }
+
+    public void HandleInventoryButton()
+    {
+        if (Input.GetKeyDown(data.invKey))
+        {
+            InventoryButtonPressed?.Invoke();
+        }
+    }
+
 
     public void HandleSelectButton()
     {
