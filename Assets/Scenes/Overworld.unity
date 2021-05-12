@@ -27141,7 +27141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560417723590332, guid: dfdc50d1d9bba1946bdbdf5d09da5b8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 65.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4560417723590332, guid: dfdc50d1d9bba1946bdbdf5d09da5b8b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28491,11 +28491,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1547336731}
     m_Modifications:
-    - target: {fileID: 1738194712, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7, type: 3}
-      propertyPath: LootPackPrefab
-      value: 
-      objectReference: {fileID: 2285077902978803429, guid: 087bcba3f8e620346aa56dcd9d8a333d,
-        type: 3}
     - target: {fileID: 5226976418222819505, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
         type: 3}
       propertyPath: m_Name
@@ -28509,7 +28504,7 @@ PrefabInstance:
     - target: {fileID: 5226976418222819506, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 163.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5226976418222819506, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
         type: 3}
@@ -28519,7 +28514,7 @@ PrefabInstance:
     - target: {fileID: 5226976418222819506, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 721
+      value: 59.9
       objectReference: {fileID: 0}
     - target: {fileID: 5226976418222819506, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
         type: 3}
@@ -28554,6 +28549,16 @@ PrefabInstance:
     - target: {fileID: 5226976418222819506, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767906817231894331, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
+        type: 3}
+      propertyPath: range
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767906817231894331, guid: 066e6eb3f57cf7446b3d02ceb5d8c7d7,
+        type: 3}
+      propertyPath: damage
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

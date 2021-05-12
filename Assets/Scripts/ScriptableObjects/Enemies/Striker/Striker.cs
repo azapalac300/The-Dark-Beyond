@@ -7,11 +7,19 @@ using UnityEngine;
 public class Striker : EnemyBehavior
 { 
 
-    public Weapon weapon;
+    public WeaponEffect weapon;
 
     public float turnSpeed;
 
-    
+    public override void Start()
+    {
+        base.Start();
+
+        //GameObject weaponObj = Instantiate(weapon.weaponEffectObj, transform.position, transform.rotation);
+
+        
+    }
+
 
     public void Update()
     {
@@ -27,9 +35,9 @@ public class Striker : EnemyBehavior
 
         if (dist < weapon.range)
         {
-            
-            weapon.Fire(gameObject);
             transform.LookAt(player.transform);
+            weapon.Fire(gameObject);
+            
         }
     }
 }

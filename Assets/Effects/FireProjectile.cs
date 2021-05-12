@@ -8,10 +8,9 @@ public class FireProjectile : WeaponEffect
 
 
     public int damage;
-    public float range;
 
 
-    public override void Activate(GameObject activationSource)
+    public override void Fire(GameObject activationSource)
     {
         Vector3 fwdVector = activationSource.transform.forward;
 

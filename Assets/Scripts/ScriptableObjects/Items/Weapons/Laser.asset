@@ -16,5 +16,5 @@ MonoBehaviour:
   weaponEffectObj: {fileID: 1412245733434292, guid: 6119a9ad0f1707a438b6c498966b31db,
     type: 3}
   cooldown: 0
-  cooldownTimer: -0.0033750609
+  cooldownTimer: 0
   range: 25

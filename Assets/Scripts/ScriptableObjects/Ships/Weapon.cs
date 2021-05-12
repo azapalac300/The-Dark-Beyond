@@ -14,7 +14,10 @@ public enum WeaponType
 
 public class WeaponEffect: MonoBehaviour
 {
-    public virtual void Activate(GameObject activationSource)
+
+    public float range;
+
+    public virtual void Fire(GameObject activationSource)
     {
 
     }
@@ -55,7 +58,7 @@ public class Weapon: ScriptableObject
             Vector3 fwdVector = (activationSource.transform.forward).normalized * range;
             Debug.DrawLine(activationSource.transform.position, activationSource.transform.position + fwdVector);
             cooldownTimer = cooldown;
-            weaponEffectObj.GetComponent<WeaponEffect>().Activate(activationSource);
+            //weaponEffectObj.GetComponent<WeaponEffect>().Activate(activationSource);
         }
     }
 

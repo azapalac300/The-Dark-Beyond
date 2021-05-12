@@ -9,15 +9,17 @@ public class ShootLaser : WeaponEffect
 
 
     public int damage;
-    public float range;
 
-    public override void Activate(GameObject activationSource)
+    public override void Fire(GameObject activationSource)
     {
-        Vector3 fwdVector = (activationSource.transform.forward).normalized*range;
+        Vector3 fwdVector = (activationSource.transform.forward).normalized*range + activationSource.transform.position;
         Vector3 start = activationSource.transform.position;
-        //Render the laser
-        Debug.DrawLine(start, fwdVector, Color.magenta, 5f);
 
+        
+        //Render the laser
+        Debug.DrawLine(start, fwdVector, Color.magenta);
+        lineRenderer.SetPositions(new Vector3[] {start, fwdVector });
+       
         //Do damage
         RaycastHit hit;
         Ray ray = new Ray(activationSource.transform.position, fwdVector.normalized);
