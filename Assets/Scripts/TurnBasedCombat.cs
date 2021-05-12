@@ -30,7 +30,7 @@ public class TurnBasedCombat : MonoBehaviour
     public float resultTime;
     private float resultTimer;
 
-    private static OverworldEnemy _overworldEnemy;
+    //private static OverworldEnemy _overworldEnemy;
 
 
     private bool playerVictorious;
@@ -125,18 +125,18 @@ public class TurnBasedCombat : MonoBehaviour
         combatFinished = true;
     }
 
-    public static void SetupCombat(OverworldEnemy overworldEnemy)
+    public static void SetupCombat()
     {
         combatFinished = false;
         combatStarted = true;
         
         DestroyEnemy += () => {
-            overworldEnemy.DropLoot();
+            //overworldEnemy.DropLoot();
             DestroyEnemy = null; 
         };
         
         
-        _overworldEnemy = overworldEnemy;
+        //overworldEnemy = overworldEnemy;
      
     }
 
@@ -144,7 +144,7 @@ public class TurnBasedCombat : MonoBehaviour
     {
         enemyObject.SetActive(true);
         Enemy newEnemy = enemyObject.GetComponent<Enemy>();
-        newEnemy.maxHP = _overworldEnemy.data.HP;
+       // newEnemy.maxHP = _overworldEnemy.data.HP;
         enemy = newEnemy;
 
         enemy.TurnComplete += () => EnemyTurnCompleted(enemyAP);

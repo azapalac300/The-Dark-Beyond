@@ -98,7 +98,6 @@
     <Compile Include="Assets\Scripts\Networking\NetworkData.cs" />
     <Compile Include="Assets\Scripts\Networking\NetworkInput.cs" />
     <Compile Include="Assets\Scripts\Networking\PlayerDatabase.cs" />
-    <Compile Include="Assets\Scripts\OverworldEnemy.cs" />
     <Compile Include="Assets\Scripts\Player\Crew.cs" />
     <Compile Include="Assets\Scripts\Player\Crewmember.cs" />
     <Compile Include="Assets\Scripts\Player\MovementInput.cs" />
@@ -107,6 +106,8 @@
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\SceneControl.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\ControlsData.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Enemies\EnemyBehavior.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Enemies\Striker\Striker.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\EnemyData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\GameData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Items\ItemData.cs" />
@@ -146,7 +147,6 @@
     <Compile Include="Assets\Scripts\Space\Planet Generation\PlanetSkeleton.cs" />
     <Compile Include="Assets\Scripts\Space\Planet Generation\TerrestrialPlanet.cs" />
     <Compile Include="Assets\Scripts\Space\Planet Generation\Vertex.cs" />
-    <Compile Include="Assets\Scripts\Space\TestBehavior.cs" />
     <Compile Include="Assets\Scripts\Space\UI\DockUI.cs" />
     <Compile Include="Assets\Scripts\Space\UI\HandleShortcuts.cs" />
     <Compile Include="Assets\Scripts\Space\UI\Starmap.cs" />

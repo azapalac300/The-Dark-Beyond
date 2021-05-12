@@ -22,19 +22,21 @@ public class WeaponEffect: MonoBehaviour
 
 
 //[CreateAssetMenu(fileName = "Weapon", menuName = "Modules/ShipModules/Weapon")]
-public class Weapon
+public class Weapon: ScriptableObject
 {
     
     public WeaponType weaponType;
 
     [SerializeField]
-    public WeaponEffect weaponEffect;
+    public GameObject weaponEffectObj;
         
         // Start is called before the first frame update
 
-    public float cooldown = 0;
+    public float cooldown;
     public float cooldownTimer;
-   
+
+
+    public float range;
 
     // Update is called once per frame
     public virtual void UpdateWeapon()
@@ -50,8 +52,10 @@ public class Weapon
     {
         if (cooldownTimer <= 0)
         {
+            Vector3 fwdVector = (activationSource.transform.forward).normalized * range;
+            Debug.DrawLine(activationSource.transform.position, activationSource.transform.position + fwdVector);
             cooldownTimer = cooldown;
-            weaponEffect.Activate(activationSource);
+            weaponEffectObj.GetComponent<WeaponEffect>().Activate(activationSource);
         }
     }
 

@@ -15,18 +15,6 @@ public class EnemyData : ScriptableObject
     public bool canDropExotic;
     public float value;
 
-    [Space(10)]
-    [SerializeField]
-    EnemyBehavior enemyBehavior;
-
-
     /*Some other stuff*/
 }
 
-public class EnemyBehavior: ScriptableObject 
-{
-    public virtual void BehaviorUpdate(Player player, OverworldEnemy overworldEnemy)
-    {
-
-    }
-}
