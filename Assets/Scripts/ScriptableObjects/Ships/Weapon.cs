@@ -12,12 +12,53 @@ public enum WeaponType
 
 
 
-public class WeaponEffect: MonoBehaviour
+public class Weapon: MonoBehaviour
 {
+    //CanFire determines when the weapon can fire for AIs
+    public virtual bool canFire { get; }
+    public virtual bool needsReload { get; }
 
     public float range;
+    public float cooldown;
+    protected float cooldownTimer;
+
+    public float fireTime;
+    protected float fireTimer;
+
+    public virtual void Awake()
+    {
+
+    }
+
+    public virtual void Update()
+    {
+        if(cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+        else
+        {
+            cooldownTimer = 0;
+        }
+
+        if(fireTimer > 0)
+        {
+            fireTimer -= Time.deltaTime;
+        }
+        else
+        {
+            fireTimer = 0;
+            cooldownTimer = cooldown;
+        }
+
+    }
 
     public virtual void Fire(GameObject activationSource)
+    {
+
+    }
+
+    public virtual void StopFiring()
     {
 
     }
@@ -25,44 +66,5 @@ public class WeaponEffect: MonoBehaviour
 
 
 //[CreateAssetMenu(fileName = "Weapon", menuName = "Modules/ShipModules/Weapon")]
-public class Weapon: ScriptableObject
-{
-    
-    public WeaponType weaponType;
-
-    [SerializeField]
-    public GameObject weaponEffectObj;
-        
-        // Start is called before the first frame update
-
-    public float cooldown;
-    public float cooldownTimer;
-
-
-    public float range;
-
-    // Update is called once per frame
-    public virtual void UpdateWeapon()
-    {
-        if(cooldownTimer > 0)
-        {
-            cooldownTimer -= Time.deltaTime;
-        }
-
-    }
-
-    public void Fire(GameObject activationSource)
-    {
-        if (cooldownTimer <= 0)
-        {
-            Vector3 fwdVector = (activationSource.transform.forward).normalized * range;
-            Debug.DrawLine(activationSource.transform.position, activationSource.transform.position + fwdVector);
-            cooldownTimer = cooldown;
-            //weaponEffectObj.GetComponent<WeaponEffect>().Activate(activationSource);
-        }
-    }
-
-
-}
 
 

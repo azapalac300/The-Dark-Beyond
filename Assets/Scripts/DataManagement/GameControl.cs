@@ -12,7 +12,7 @@ public enum Scenario
     Space,
     Interior,
     Ground,
-    Combat
+    Convo
 }
 
 public interface PlayZoneControl{
@@ -30,7 +30,7 @@ public class GameControl : MonoBehaviour {
 
     public GameObject Ground;
 
-    public GameObject Combat;
+    public GameObject gameOver;
 
     public PlayZoneControl currentZone;
 
@@ -49,6 +49,9 @@ public class GameControl : MonoBehaviour {
 
     private static event Action DismissConvoAction;
 
+
+    private static event Action LoadGameOverAction;
+
     public Scenario defaultScenario;
 
     public void Awake()
@@ -59,14 +62,14 @@ public class GameControl : MonoBehaviour {
             Space.SetActive(true);
             Interior.SetActive(false);
             Ground.SetActive(false);
-            Combat.SetActive(false);
+            Convo.SetActive(false);
         };
 
         LoadInteriorAction += () => {
             Space.SetActive(false);
             Interior.SetActive(true);
             Ground.SetActive(false);
-            Combat.SetActive(false);
+            Convo.SetActive(false);
 
 
         };
@@ -75,7 +78,7 @@ public class GameControl : MonoBehaviour {
             Space.SetActive(false);
             Interior.SetActive(false);
             Ground.SetActive(true);
-            Combat.SetActive(false);
+            Convo.SetActive(false);
         };
 
         LoadCombatAction += () =>
@@ -83,27 +86,35 @@ public class GameControl : MonoBehaviour {
             Space.SetActive(false);
             Interior.SetActive(false);
             Ground.SetActive(false);
-            Combat.SetActive(true);
+            Convo.SetActive(true);
             
         };
 
+        LoadGameOverAction += () =>
+        {
+            Space.SetActive(false);
+            Interior.SetActive(false);
+            Ground.SetActive(false);
+            Convo.SetActive(false);
+            gameOver.SetActive(true);
+        };
+
+
         LoadConvoAction += () =>
         {
-            currentZone.Pause();
+            Space.SetActive(false);
+            Interior.SetActive(false);
+            Ground.SetActive(false);
             Convo.SetActive(true);
         };
 
-        DismissConvoAction += () =>
-        {
-            currentZone.Play();
-            Convo.SetActive(false);
-        };
+       
         #endregion
 
         switch (defaultScenario)
         {
-            case Scenario.Combat:
-                LoadCombat();
+            case Scenario.Convo:
+                LoadConvo();
                 break;
 
             case Scenario.Space:
@@ -152,5 +163,11 @@ public class GameControl : MonoBehaviour {
     {
         DismissConvoAction?.Invoke();
     }
+
+    public static void GameOver()
+    {
+        LoadGameOverAction?.Invoke();
+    }
+
 
 }

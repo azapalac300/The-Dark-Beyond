@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Convo\ConversationHandler.cs" />
     <Compile Include="Assets\Effects\FireProjectile.cs" />
     <Compile Include="Assets\Effects\ShootLaser.cs" />
     <Compile Include="Assets\InteriorCamera.cs" />

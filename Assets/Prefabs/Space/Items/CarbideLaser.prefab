@@ -44,10 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a7b9bfd66dc3643a7df2145d64797f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 0
+  cooldown: 0
+  fireTime: 0
   lineRenderer: {fileID: -3517618062403644081}
   laserColor: {r: 1, g: 0, b: 0, a: 0}
+  laserMaterial: {fileID: 2100000, guid: 5477d797f662c0343b74532e8f0fe879, type: 2}
   damage: 0
-  range: 0
+  damageType: 0
+  storedEnergy: 0
+  currentStoredEnergy: 0
+  recovering: 0
+  energyCost: 0
+  recoveryRate: 0
 --- !u!120 &-3517618062403644081
 LineRenderer:
   m_ObjectHideFlags: 0

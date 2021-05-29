@@ -14,12 +14,17 @@ public enum ShipModuleType
 
 }
 
-public class ShipModule :ScriptableObject
+public class ShipModule: MonoBehaviour
 {
     public virtual ShipModuleType Type { get { return ShipModuleType.Base; } }
 
     public virtual void UpdateModule()
     {
 
+    }
+
+    public virtual bool TakeModuleDamage(float damageToTake, DamageType damageType)
+    {
+        return true;
     }
 }

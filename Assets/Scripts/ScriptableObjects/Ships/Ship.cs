@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Ship : MonoBehaviour
+public interface Destructible
+{
+    void TakeDamage(float damageToTake, DamageType type);
+}
+public class Ship : MonoBehaviour, Destructible
 {
     //Ship is a container that manages ship data
     public ShipData currentShip;
@@ -32,7 +36,9 @@ public class Ship : MonoBehaviour
         
 
 
-        PlayerSpaceInput.PrimaryFired += () => FirePrimary();
+        PlayerSpaceInput.PrimaryFired += () => { primary?.Fire(gameObject); };
+
+        PlayerSpaceInput.PrimaryNotFired += () => { primary?.StopFiring();  };
 
         PlayerSpaceInput.SecondaryFired += () => FireSecondary();
     }
@@ -85,7 +91,7 @@ public class Ship : MonoBehaviour
 
         foreach(Weapon weapon in weapons)
         {
-            weapon?.UpdateWeapon();
+            //weapon?.UpdateWeapon();
         }
     }
    
@@ -97,14 +103,7 @@ public class Ship : MonoBehaviour
         }
     }
 
-    public void FirePrimary()
-    {
-        if (primary != null)
-        {
-            primary.Fire(gameObject);
-
-        }
-    }
+   
 
     public void FireSecondary()
     {
@@ -115,7 +114,34 @@ public class Ship : MonoBehaviour
     }
 
 
-  
+    public void TakeDamage(float damageToTake, DamageType type)
+    {
+        if (HasModule<Shields>())
+        {
+            bool moduleActive = GetModule<Shields>().TakeModuleDamage(damageToTake, type);
+            if (moduleActive)
+            {
+                return;
+            }
+        }
+
+        if (HasModule<Hull>())
+        {
+            bool moduleActive = GetModule<Hull>().TakeModuleDamage(damageToTake, type);
+
+            if (moduleActive)
+            {
+                return;
+            }
+            else
+            {
+                GameControl.GameOver();
+            }
+        }
+
+        //If I take damage and don't have a hull, I die instantly
+        GameControl.GameOver();
+    }
     //Et cetera
 
 

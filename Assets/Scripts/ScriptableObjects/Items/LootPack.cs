@@ -56,13 +56,19 @@ public class LootPack : MonoBehaviour
     public void LookForPlayer()
     {
         if (player != null) return;
+
+
+        player = GameObject.Find("Player").GetComponent<Player>();
+
+
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, pickupRadius);
 
         foreach(Collider c in colliders)
         {
             if(c.gameObject.tag == "Player")
             {
-                player = c.gameObject.GetComponentInParent<Player>();
+                player = c.gameObject.GetComponent<Player>();
                 break;
             }
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EnemyBehavior: MonoBehaviour {
+public class EnemyBehavior: MonoBehaviour, Destructible {
 
     public EnemyData data;
 
@@ -11,7 +11,7 @@ public class EnemyBehavior: MonoBehaviour {
 
     public GameObject LootPackPrefab;
 
-    public int currHP;
+    public float currHP;
 
     public virtual void Start()
     {
@@ -20,7 +20,7 @@ public class EnemyBehavior: MonoBehaviour {
 
     }
 
-    public virtual void TakeDamage(int damageAmount)
+    public virtual void TakeDamage(float damageAmount, DamageType damageType)
     {
         currHP -= damageAmount;
 

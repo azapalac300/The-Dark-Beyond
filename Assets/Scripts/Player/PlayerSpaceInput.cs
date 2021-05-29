@@ -19,7 +19,11 @@ public class PlayerSpaceInput : MonoBehaviour {
     public static event Action SelectButtonPressed;
 
     public static event Action PrimaryFired;
+    public static event Action PrimaryNotFired;
+
     public static event Action SecondaryFired;
+    public static event Action SecondaryNotFired;
+
     public static event Action Ability0Fired;
     public static event Action Ability1Fired; 
     public static event Action Ability2Fired;
@@ -35,6 +39,16 @@ public class PlayerSpaceInput : MonoBehaviour {
         X = buttonInput.xPressed;
         Y = buttonInput.yPressed;
 
+
+        if (A)
+        {
+            PrimaryFired?.Invoke();
+        }
+        else
+        {
+            PrimaryNotFired?.Invoke();
+        }
+
         cursorPosition = Input.mousePosition;
 
         HandleMapButton();
@@ -43,10 +57,7 @@ public class PlayerSpaceInput : MonoBehaviour {
 
     }
 
-    public void FirePrimary()
-    {
-        PrimaryFired?.Invoke();
-    }
+  
 
     public void FireSecondary()
     {
@@ -93,7 +104,7 @@ public class PlayerSpaceInput : MonoBehaviour {
     public ButtonInput GetButtonInput()
     {
         ButtonInput buttonInput = new ButtonInput();
-        buttonInput.aPressed = (Input.GetAxis("Fire1") == 1);
+        buttonInput.aPressed = (Input.GetAxis("Fire1") == 1 || Input.GetKey(KeyCode.F));
         buttonInput.bPressed = (Input.GetAxis("Fire2") == 1);
         buttonInput.xPressed = (Input.GetAxis("Fire3") == 1);
         buttonInput.yPressed = (Input.GetAxis("Fire4") == 1);
