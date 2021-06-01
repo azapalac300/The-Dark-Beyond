@@ -13,15 +13,21 @@ public class PlanetGenerator : MonoBehaviour {
     public bool generatePlanet;
 
 
-    private static PlanetSkeleton _baseSkeleton;
+    private PlanetSkeleton _baseSkeleton;
 
     // Use this for initialization
     void Start() {
         generatePlanet = false;
     }
 
+    public void GenerateTerrestrialPlanet()
+    {
+        var terrestrialPlanet = GenerateTerrestrialPlanetObject().GetComponent<TerrestrialPlanet>();
 
-    public static GameObject GenerateTerrestrialPlanet()
+        terrestrialPlanet.Initialize();
+    }
+
+    public GameObject GenerateTerrestrialPlanetObject()
     {
         PlanetSpecs customSpecs = GetPlanetSpecs(PlanetPreset.Default);
 
@@ -30,6 +36,8 @@ public class PlanetGenerator : MonoBehaviour {
         if(_baseSkeleton == null)
         {
             _baseSkeleton = GeneratePlanetSkeleton(customSpecs, Vector3.zero);
+            _baseSkeleton.planetObject.name = "Template Planet";
+            _baseSkeleton.planetObject.SetActive(false);
         }
 
         PlanetSkeleton p = _baseSkeleton.Copy();

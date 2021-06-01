@@ -11,6 +11,8 @@ public class ShootLaser : Weapon
     public int damage;
     public DamageType damageType;
 
+    public GameObject sparks;
+
     public float storedEnergy;
     public float currentStoredEnergy;
     public bool recovering;
@@ -27,6 +29,7 @@ public class ShootLaser : Weapon
         lineRenderer.materials[0] = new Material(laserMaterial);
         laserMaterial = lineRenderer.materials[0];
 
+        sparks.SetActive(false);
         laserMaterial.SetColor("MainColor", laserColor);
     }
 
@@ -73,16 +76,19 @@ public class ShootLaser : Weapon
         if(Physics.Linecast(start, fwdVector, out hit))
 
         {
-            if(hit.collider.tag == "Player")
-            {
-               // hit.collider.gameObject.GetComponentInParent<Destructible>().TakeDamage(damage*Time.deltaTime, DamageType.Ballistic);
-            }
 
             if (hit.collider.tag == "Destructible")
             {
+                
                 hit.collider.gameObject.GetComponentInParent<Destructible>().TakeDamage(damage*Time.deltaTime, DamageType.Ballistic);
             }
             destination = hit.point;
+            sparks.transform.position = hit.point;
+            sparks.SetActive(true);
+        }
+        else
+        {
+            sparks.SetActive(false);
         }
 
         //Render the laser

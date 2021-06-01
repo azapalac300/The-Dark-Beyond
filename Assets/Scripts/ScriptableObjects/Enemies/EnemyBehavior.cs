@@ -27,7 +27,6 @@ public class EnemyBehavior: MonoBehaviour, Destructible {
         if(currHP <= 0)
         {
             Destroyed();
-            DropLoot();
         }
     }
 
@@ -50,6 +49,5 @@ public class EnemyBehavior: MonoBehaviour, Destructible {
         }
 
         player.AddCredits(data.bounty);
-        Destroy(gameObject);
     }
 }

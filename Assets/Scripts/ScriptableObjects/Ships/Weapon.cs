@@ -20,7 +20,7 @@ public class Weapon: MonoBehaviour
 
     public float range;
     public float cooldown;
-    protected float cooldownTimer;
+    public float cooldownTimer;
 
     public float fireTime;
     protected float fireTimer;
@@ -41,15 +41,6 @@ public class Weapon: MonoBehaviour
             cooldownTimer = 0;
         }
 
-        if(fireTimer > 0)
-        {
-            fireTimer -= Time.deltaTime;
-        }
-        else
-        {
-            fireTimer = 0;
-            cooldownTimer = cooldown;
-        }
 
     }
 

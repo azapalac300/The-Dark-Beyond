@@ -15,20 +15,26 @@ public class Striker : EnemyBehavior
     public float turnSpeed;
 
     private StrikerState strikerState;
+
+    public GameObject model;
+
+    public GameObject shield;
+
+    public Explosion explosion;
+    bool destroyed;
     public override void Start()
     {
         base.Start();
 
         //GameObject weaponObj = Instantiate(weapon.weaponEffectObj, transform.position, transform.rotation);
 
-        
+        explosion.explosionDone += () => { Destroy(gameObject); };
     }
 
 
     public void Update()
     {
         HandleShooting();
-
 
     }
 
@@ -53,7 +59,7 @@ public class Striker : EnemyBehavior
                 }
                 weapon.StopFiring();
 
-             break;
+                break;
             case StrikerState.shooting:
                 if (weapon.needsReload)
                 {
@@ -79,7 +85,21 @@ public class Striker : EnemyBehavior
                 weapon.StopFiring();
                 break;
         }
-
-
     }
+
+    public override void Destroyed()
+    {
+        if (!destroyed)
+        {
+            shield.SetActive(false);
+            model.SetActive(false);
+            explosion.PlayExplosion();
+            DropLoot();
+            destroyed = true;
+
+        }
+    }
+
+
 }
+

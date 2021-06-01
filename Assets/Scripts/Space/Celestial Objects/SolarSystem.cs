@@ -14,6 +14,7 @@ public class SolarSystem : MonoBehaviour {
     public PlanetFactory planetFactory;
     private bool generatingMoonsFromPlanet = false;
 
+    public PlanetGenerator planetGenerator;
 
 
     public void Initialize()
@@ -26,6 +27,13 @@ public class SolarSystem : MonoBehaviour {
 
 
     void Start () {
+        planetGenerator = GameObject.Find("PlanetGenerator").GetComponent<PlanetGenerator>();
+
+        if(planetGenerator == null)
+        {
+            Debug.LogError("ERROR: Planet Generator not found");
+            return;
+        }
 
         GeneratePlanets();
 
@@ -85,7 +93,7 @@ public class SolarSystem : MonoBehaviour {
                 }
                 else
                 {
-                    planetObject = PlanetGenerator.GenerateTerrestrialPlanet();
+                    planetObject = planetGenerator.GenerateTerrestrialPlanetObject();
                    
                 }
             }
