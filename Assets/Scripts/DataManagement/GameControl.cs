@@ -12,7 +12,8 @@ public enum Scenario
     Space,
     Interior,
     Ground,
-    Convo
+    Convo,
+    GameOver
 }
 
 public interface PlayZoneControl{
@@ -127,6 +128,10 @@ public class GameControl : MonoBehaviour {
 
             case Scenario.Ground:
                 LoadGround();
+                break;
+
+            case Scenario.GameOver:
+                GameOver();
                 break;
         }
     }

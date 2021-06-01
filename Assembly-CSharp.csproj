@@ -83,6 +83,7 @@
     <Compile Include="Assets\Resources\SCI-FI UI Pack Pro\SCI-FI UI Pack Pro V1\Resources_V1\Scripts\SliderValuePass.cs" />
     <Compile Include="Assets\Scripts\DataManagement\GameControl.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\Ground\TerrainGenerator.cs" />
     <Compile Include="Assets\Scripts\HandleScrollbar.cs" />
     <Compile Include="Assets\Scripts\Interior\InteriorBuilder.cs" />

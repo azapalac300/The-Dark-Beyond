@@ -34,6 +34,9 @@ public class Striker : EnemyBehavior
 
     public void Update()
     {
+        if (destroyed) return;
+
+
         HandleShooting();
 
     }
