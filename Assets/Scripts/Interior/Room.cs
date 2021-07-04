@@ -21,7 +21,6 @@ public enum RoomFunction
 
 public class Room : MonoBehaviour
 {
-    public GameObject upCorridor, rightCorridor, downCorridor, leftCorridor;
 
     private List<GameObject> corridors;
 
@@ -34,23 +33,16 @@ public class Room : MonoBehaviour
     private int coordX, coordY;
     public List<Direction> availableDirections;
 
+    public List<GameObject> roomVariants;
 
-
-
+    
+    
     public void Initialize()
     {
+       // roomVariants[Random.Range(0, roomVariants.Count)].gameObject.SetActive(true);
+        
         roomFunction = RoomFunction.Standard;
-        availableDirections = new List<Direction>() {
-        Direction.UP,
-        Direction.RIGHT,
-        Direction.DOWN,
-        Direction.LEFT
-        };
 
-        corridors = new List<GameObject>()
-        {
-            upCorridor, rightCorridor, downCorridor, leftCorridor
-        };
 
         neighbors = new List<Room>();
     }
@@ -145,9 +137,6 @@ public class Room : MonoBehaviour
 
                     neighbors.Add(neighbor);
                     neighbor.neighbors.Add(this);
-                    GetCorridor(direction).SetActive(true);
-                    availableDirections.Remove(direction);
-                    neighbor.availableDirections.Remove(GetOpposite(direction));
                     roomDict[neighborCoords] = neighbor;
                 }
             }
@@ -183,21 +172,6 @@ public class Room : MonoBehaviour
         return Direction.UP;
     }
 
-    public GameObject GetCorridor(Direction direction)
-    {
-        switch (direction)
-        {
-            case Direction.UP:
-                return upCorridor;
-            case Direction.DOWN:
-                return downCorridor;
-            case Direction.LEFT:
-                return leftCorridor;
-            case Direction.RIGHT:
-                return rightCorridor;
-        }
-        return null;
-    }
 
     public void DetermineRoomType() {
 

@@ -12,18 +12,15 @@ public class InteriorBuilder : MonoBehaviour
     [Range (0, 1)]
     public float branchFactor;
 
-    [SerializeField]
-    public List<GameObject> floorPrefabs;
+    public GameObject roomSeed;
 
+    [Space(10)]
 
-    [SerializeField]
-    public List<GameObject> corridorPrefabs;
-
-    
-    //Start from the center out first, since that's easiest
-    public Room roomSeed;
     public float roomOffset;
+
+    [HideInInspector]
     public Room originRoom;
+
     private RandomQueue<Room> roomQueue;
 
     private List<Room> rooms;
@@ -31,7 +28,7 @@ public class InteriorBuilder : MonoBehaviour
     public GameObject refuel, bar, partShop;
     public GameObject characterPrefab;
 
-    public Dictionary<string, Room> coordDict;
+    private Dictionary<string, Room> coordDict;
 
     public void Start()
     {
@@ -40,7 +37,7 @@ public class InteriorBuilder : MonoBehaviour
 
       
         BuildInterior();
-        FurnishInterior();
+        //FurnishInterior();
     }
 
     public void Update()
@@ -57,9 +54,9 @@ public class InteriorBuilder : MonoBehaviour
         bool hasBar = false;
         bool hasPartShop = false;
 
-        GameObject roomSeedObject = Instantiate(roomSeed.gameObject, transform.position, Quaternion.identity);
-        roomSeedObject.transform.SetParent(transform);
-        Room origin = roomSeedObject.GetComponent<Room>();
+        GameObject obj = Instantiate(roomSeed, transform.position, Quaternion.identity);
+        obj.transform.SetParent(transform);
+        Room origin = obj.GetComponent<Room>();
         originRoom = origin;
         origin.Initialize();
         string originCoords = origin.SetCoords(0, 0);
@@ -89,17 +86,19 @@ public class InteriorBuilder : MonoBehaviour
                             //Create a new room
                             i++;
 
-                            Room newRoom = room.SpawnNeighboringRoom(roomSeed.gameObject, (Direction)j, roomOffset, transform, ref coordDict);
+                            Room newRoom = room.SpawnNeighboringRoom(roomSeed, (Direction)j, roomOffset, transform, ref coordDict);
+                            
 
                             if (newRoom != null)
                             {
-                                if (i >= interiorSize / 3 && hasPartShop == false)
+                                bool pass = true;
+                                if (hasPartShop == false && newRoom.roomFunction == RoomFunction.Standard)
                                 {
                                     CreateSpecialRoom(RoomFunction.PartShop, ref newRoom);
                                     hasPartShop = true;
                                 }
 
-                                if (i >= interiorSize / 2 && hasBar == false)
+                                if (hasBar == false && newRoom.roomFunction == RoomFunction.Standard)
                                 {
                                     CreateSpecialRoom(RoomFunction.Bar, ref newRoom);
                                     hasBar = true;
@@ -107,6 +106,7 @@ public class InteriorBuilder : MonoBehaviour
                                 rooms.Add(newRoom);
                                 roomQueue.Push(newRoom);
                                 factor *= branchFactor;
+                                newRoom.transform.SetParent(transform);
                             }
 
 
@@ -132,7 +132,11 @@ public class InteriorBuilder : MonoBehaviour
 
     }
 
-    public void FurnishInterior()
+
+
+
+    //TODO - Implement this function in some way
+   /* public void FurnishInterior()
     {
         for(int i = 0; i < rooms.Count; i++)
         {
@@ -141,7 +145,7 @@ public class InteriorBuilder : MonoBehaviour
             GameObject corridorStyle = corridorPrefabs[UnityEngine.Random.Range(0, corridorPrefabs.Count)];
             rooms[i].FurnishRoom(floorStyle, corridorStyle);
         }
-    }
+    }*/
 
     public void SpawnNPCs()
     {
@@ -169,12 +173,13 @@ public class InteriorBuilder : MonoBehaviour
     {
         if(room.roomFunction != RoomFunction.Standard)
         {
+            Debug.LogError("Error: Overriding existing special room!");
             return;
         }
 
         room.roomFunction = roomType;
         GameObject prefab = null;
-        Vector3 spawnPosition = room.gameObject.transform.position + new Vector3(0, 5f, 0);
+        Vector3 spawnPosition = room.gameObject.transform.position + new Vector3(-70, 5f, 70);
         switch (roomType)
         {
             case RoomFunction.Refuel:

@@ -15,53 +15,46 @@ public class DockUI : MonoBehaviour {
 
     public static DockUIState uiState;
 
-    private bool dockButtonsActive;
-    public Button undock;
-    public Button land;
-    public Button dockInfo;
 
     public GameObject dockInfoWindow;
 
+    public bool initialized;
+
     // Start is called before the first frame update
-    void Start()
+    public void Initialize()
     {
-      
+        
+        Player.OnDock += ShowUI;
+        Player.OnUndock += HideUI;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (uiState) {
-            case DockUIState.landed:
-                break;
-
-            case DockUIState.orbiting:
-                undock.gameObject.SetActive(true);
-                land.gameObject.SetActive(true);
-                dockInfo.gameObject.SetActive(true);
-                break;
-            case DockUIState.traveling:
-                undock.gameObject.SetActive(false);
-                land.gameObject.SetActive(false);
-                dockInfo.gameObject.SetActive(false);
-                break;
-
-        }
-
-        
+     
 
     }
 
+    public void ShowUI()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void HideUI()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void ShowInfo()
     {
-        if (dockInfoWindow.activeSelf)
-        {
-            dockInfoWindow.SetActive(false);
-        }
-        else
-        {
-            dockInfoWindow.SetActive(true);
-        }
+        dockInfoWindow.SetActive(true);
     }
+
+    public void HideInfo()
+    {
+
+        dockInfoWindow.SetActive(false);
+    }
+
+  
 }

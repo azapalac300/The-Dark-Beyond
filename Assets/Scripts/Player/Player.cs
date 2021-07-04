@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using System;
 
 
 public class Player : MonoBehaviour {
@@ -15,7 +16,11 @@ public class Player : MonoBehaviour {
     public static Player instance;
 
     public int credits;
+
+    public Text creditDisplay; 
     public  bool Docked { get { return currentDock != null; } }
+    public static event Action OnDock;
+    public static event Action OnUndock;
 
     public  Vector3 Position
     {
@@ -27,7 +32,7 @@ public class Player : MonoBehaviour {
     public void AddCredits(int creditsToAdd)
     {
         credits += creditsToAdd;
-
+        
     }
 
     private void Awake()
@@ -41,7 +46,6 @@ public class Player : MonoBehaviour {
 
         input = GetComponent<PlayerSpaceInput>();
 
-        DockUI.uiState = DockUIState.traveling;
     }
 
 
@@ -76,14 +80,16 @@ public class Player : MonoBehaviour {
         UpdataData();
         ActivateCelestialObjectsNearby();
 
-
+        creditDisplay.text = credits.ToString();
     }
 
     public void Dock(Docking d)
     {
         transform.parent = d.transform;
         currentDock = d;
-        DockUI.uiState = DockUIState.orbiting;
+        OnDock?.Invoke();
+
+
         Debug.Log("Docked!");
        
     }
@@ -100,7 +106,8 @@ public class Player : MonoBehaviour {
     {
         transform.parent = null;
         currentDock = null;
-        DockUI.uiState = DockUIState.traveling;
+        OnUndock?.Invoke();
+        
     }
 
     private void HandleMovement()

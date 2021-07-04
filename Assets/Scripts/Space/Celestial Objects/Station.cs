@@ -38,6 +38,6 @@ public class Station : MonoBehaviour, Planet
     {
         Debug.Log("Landing on space station");
 
-        SceneManager.LoadScene("Interior");
+        GameControl.LoadInterior();
     }
 }

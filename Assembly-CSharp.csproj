@@ -81,6 +81,8 @@
     <Compile Include="Assets\Resources\SCI-FI UI Pack Pro\SCI-FI UI Pack Pro V1\Resources_V1\Scripts\PressedBtn.cs" />
     <Compile Include="Assets\Resources\SCI-FI UI Pack Pro\SCI-FI UI Pack Pro V1\Resources_V1\Scripts\SliderRunTo1.cs" />
     <Compile Include="Assets\Resources\SCI-FI UI Pack Pro\SCI-FI UI Pack Pro V1\Resources_V1\Scripts\SliderValuePass.cs" />
+    <Compile Include="Assets\Scripts\CrewUI.cs" />
+    <Compile Include="Assets\Scripts\CrewUIEntry.cs" />
     <Compile Include="Assets\Scripts\DataManagement\GameControl.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />

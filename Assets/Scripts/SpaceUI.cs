@@ -7,6 +7,7 @@ public class SpaceUI : MonoBehaviour
     //Used to manage UI stuff at a top level
     public Starmap starmap;
     public ShipInventory shipInventory;
+    public DockUI dockUI;
     [Space(10)]
     public GameObject shortcuts;
     public GameObject shortcutsButton;
@@ -14,6 +15,7 @@ public class SpaceUI : MonoBehaviour
     {
         starmap.Initialize();
         shipInventory.Initialize();
+        dockUI.Initialize();
     }
 
     private void Update()

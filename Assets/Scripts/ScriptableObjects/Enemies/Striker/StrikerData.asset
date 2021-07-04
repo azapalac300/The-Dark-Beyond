@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: StrikerData
   m_EditorClassIdentifier: 
   HP: 150
-  overworldSpeed: 50
-  chaseRadius: 300
+  speed: 60
+  turnSpeed: 0
+  maxChaseRadius: 550
+  minChaseRadius: 20
   bounty: 100
-  lootAmount: 10
+  lootAmount: 3
   lootSpawnRadius: 10
   canDropLegendary: 0
   canDropExotic: 0
   value: 0
+  maxDisplayDist: 2000
+  minDisplayDist: 200

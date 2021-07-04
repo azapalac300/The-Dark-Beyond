@@ -9,6 +9,8 @@ public class InteriorCrewManager : MonoBehaviour
     public Vector3 spawnPoint;
 
     public int nCrew;
+
+
     // Start is called before the first frame update
     void Start()
     {

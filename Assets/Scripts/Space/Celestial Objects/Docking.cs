@@ -9,11 +9,16 @@ public class Docking : MonoBehaviour
     private bool locked;
     public Planet parentPlanet { get; private set; }
     public GameObject dockIndicator;
-    
+
+
+
+    private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
         parentPlanet = GetComponent<Planet>();
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -29,7 +34,7 @@ public class Docking : MonoBehaviour
             dockIndicator.SetActive(false);
         }
 
-        if (!Player.instance.Docked)
+        if (!player.Docked)
         {
            
             canDock = dist() < dockRadius;
@@ -41,7 +46,7 @@ public class Docking : MonoBehaviour
 
             if (canDock && !locked)
             {
-                Player.instance.Dock(this);
+                player.Dock(this);
                 locked = true;
             }
 
@@ -51,7 +56,7 @@ public class Docking : MonoBehaviour
     private float dist()
     {
 
-        return (Vector3.Distance(transform.position, Player.instance.Position));
+        return (Vector3.Distance(transform.position, player.Position));
 
     }
 

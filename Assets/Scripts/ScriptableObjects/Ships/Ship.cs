@@ -9,8 +9,6 @@ public interface Destructible
 }
 public class Ship : MonoBehaviour, Destructible
 {
-    //Ship is a container that manages ship data
-    public ShipData currentShip;
 
     private Dictionary<ShipModuleType, ShipModule> ModuleDict;
 

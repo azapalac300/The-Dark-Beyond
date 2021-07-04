@@ -6,19 +6,17 @@ using UnityEngine;
 
 public class Striker : EnemyBehavior
 { 
-    private enum StrikerState
+    private enum ShootingState
     {
         idle, shooting, reloading
     }
+
     public Weapon weapon;
 
-    public float turnSpeed;
 
-    private StrikerState strikerState;
+    private ShootingState strikerState;
 
     public GameObject model;
-
-    public GameObject shield;
 
     public Explosion explosion;
     bool destroyed;
@@ -26,19 +24,41 @@ public class Striker : EnemyBehavior
     {
         base.Start();
 
-        //GameObject weaponObj = Instantiate(weapon.weaponEffectObj, transform.position, transform.rotation);
 
         explosion.explosionDone += () => { Destroy(gameObject); };
     }
 
 
-    public void Update()
+    public override void Update()
     {
+
+
         if (destroyed) return;
 
-
+        HandleFollowPlayer();
         HandleShooting();
 
+        base.Update();
+    }
+
+
+    public void HandleFollowPlayer()
+    {
+        float dist = Vector3.Distance(transform.position, player.transform.position);
+        if (dist < maxChaseDist && dist > minChaseDist)
+        {
+
+            Vector3 diff = (transform.position - player.transform.position).normalized;
+
+
+            transform.Translate(diff * speed * Time.deltaTime);
+
+            transform.LookAt(player.transform);
+
+
+
+
+        }
     }
 
     public override void TakeDamage(float damageAmount, DamageType damageType)
@@ -55,34 +75,34 @@ public class Striker : EnemyBehavior
 
         switch (strikerState)
         {
-            case StrikerState.idle:
+            case ShootingState.idle:
                 if (dist <= weapon.range)
                 {
-                    strikerState = StrikerState.shooting;
+                    strikerState = ShootingState.shooting;
                 }
                 weapon.StopFiring();
 
                 break;
-            case StrikerState.shooting:
+            case ShootingState.shooting:
                 if (weapon.needsReload)
                 {
-                    strikerState = StrikerState.reloading;
+                    strikerState = ShootingState.reloading;
                 }
 
                 if (dist > weapon.range)
                 {
-                    strikerState = StrikerState.idle;
+                    strikerState = ShootingState.idle;
                 }
-                transform.LookAt(player.transform);
+
 
                 weapon.Fire(gameObject);
 
                 break;
-            case StrikerState.reloading:
+            case ShootingState.reloading:
 
                 if (weapon.canFire)
                 {
-                    strikerState = StrikerState.shooting;
+                    strikerState = ShootingState.shooting;
                 }
 
                 weapon.StopFiring();
@@ -94,7 +114,6 @@ public class Striker : EnemyBehavior
     {
         if (!destroyed)
         {
-            shield.SetActive(false);
             model.SetActive(false);
             explosion.PlayExplosion();
             DropLoot();

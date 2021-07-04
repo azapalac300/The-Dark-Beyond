@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1015403321}
   m_Layer: 8
   m_Name: PlayerCamera
-  m_TagString: Player
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   maneuverability: 50
   data: {fileID: 11400000, guid: 8b08298ed15f1c84eb21809008a669ac, type: 2}
   credits: 0
+  creditDisplay: {fileID: 0}
 --- !u!114 &2076366148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,13 +216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a181393fc1d6848869febd532c283b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentShip: {fileID: 0}
   modules:
-  - {fileID: 11400000, guid: 8cf07044b8c2fce459a63bedd24ef733, type: 2}
+  - {fileID: 8897376233229575813}
   - {fileID: 11400000, guid: f7b62ca87a7ea6f4abc2df380e911de5, type: 2}
-  - {fileID: 0}
+  - {fileID: 5212643834311335905}
   primary: {fileID: 5390844805300574178}
-  secondary: {fileID: 0}
+  secondary: {fileID: 3528230601076830358}
   ability1: {fileID: 0}
   ability2: {fileID: 0}
   ability3: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 5962471822734516477}
   m_Layer: 8
   m_Name: JumpDrive
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 1028901227}
   m_Layer: 8
   m_Name: SM_Ship_Fighter_04
-  m_TagString: Player
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 56e95c9f463de394d85a3e2b82792d3a, type: 3}
 --- !u!1 &7373014246160929105
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 8897376233229575813}
   m_Layer: 8
   m_Name: Hull
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,6 +418,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4560417723590332}
     m_Modifications:
+    - target: {fileID: 1899580146777133308, guid: a34dfa2c39efdde4ba82731c4d50bd8c,
+        type: 3}
+      propertyPath: missilesToSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1899580146777133309, guid: a34dfa2c39efdde4ba82731c4d50bd8c,
         type: 3}
       propertyPath: m_RootOrder
@@ -486,6 +491,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3074376476872794218}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3528230601076830358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1899580146777133308, guid: a34dfa2c39efdde4ba82731c4d50bd8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3074376476872794218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca10a486ab5d66458f774e4c9f70d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5424160648709027862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -497,9 +514,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarbideLaser
       objectReference: {fileID: 0}
+    - target: {fileID: 1412245733434292, guid: 6119a9ad0f1707a438b6c498966b31db, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4221124787451766, guid: 6119a9ad0f1707a438b6c498966b31db, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221124787451766, guid: 6119a9ad0f1707a438b6c498966b31db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221124787451766, guid: 6119a9ad0f1707a438b6c498966b31db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221124787451766, guid: 6119a9ad0f1707a438b6c498966b31db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4221124787451766, guid: 6119a9ad0f1707a438b6c498966b31db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -544,6 +577,11 @@ PrefabInstance:
     - target: {fileID: 114381742689185780, guid: 6119a9ad0f1707a438b6c498966b31db,
         type: 3}
       propertyPath: range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114381742689185780, guid: 6119a9ad0f1707a438b6c498966b31db,
+        type: 3}
+      propertyPath: damage
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114381742689185780, guid: 6119a9ad0f1707a438b6c498966b31db,
@@ -559,7 +597,22 @@ PrefabInstance:
     - target: {fileID: 114381742689185780, guid: 6119a9ad0f1707a438b6c498966b31db,
         type: 3}
       propertyPath: storedEnergy
-      value: 100
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138988434512830435, guid: 6119a9ad0f1707a438b6c498966b31db,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138988434512830435, guid: 6119a9ad0f1707a438b6c498966b31db,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138988434512830435, guid: 6119a9ad0f1707a438b6c498966b31db,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6119a9ad0f1707a438b6c498966b31db, type: 3}
@@ -592,6 +645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096609630887793765, guid: 1b017977e8697294ab7515d22aef9dfb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 6577383375296336840, guid: 1b017977e8697294ab7515d22aef9dfb,
         type: 3}
@@ -656,3 +714,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8337836543875633519}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5212643834311335905 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4315281710233915022, guid: 1b017977e8697294ab7515d22aef9dfb,
+    type: 3}
+  m_PrefabInstance: {fileID: 8337836543875633519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81ce572c347c38458a2c5f9a61e1768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
