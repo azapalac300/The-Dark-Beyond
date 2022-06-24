@@ -22,14 +22,28 @@ public interface Planet {
 
 public enum TerrestrialPlanetType
 {
+    Random, //Placeholder value
+
     Ice,
     Terran,
     Desert,
     Exotic,
     Storm,
     Lava,
-    Lunar
+    Lunar,
 }
+
+public enum TerrestrialPlanetTypePride
+{
+    //Pride Planets
+    /*
+    Gay,
+    Lesbian,
+    Bi,
+    Trans,
+    Ace,*/
+}
+
 
 [ExecuteInEditMode]
 public class TerrestrialPlanet : MonoBehaviour, Planet {
@@ -65,7 +79,11 @@ public class TerrestrialPlanet : MonoBehaviour, Planet {
 	public void Initialize () {
         type = PlanetType.Terrestrial;
         Type = type;
-        terrestrialType = (TerrestrialPlanetType)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(TerrestrialPlanetType)).Length));
+
+        if (terrestrialType == TerrestrialPlanetType.Random)
+        {
+            terrestrialType = (TerrestrialPlanetType)(UnityEngine.Random.Range(1, Enum.GetNames(typeof(TerrestrialPlanetType)).Length));
+        }
 
 
         UpdateBiomeSettings();
@@ -91,7 +109,7 @@ public class TerrestrialPlanet : MonoBehaviour, Planet {
 
     public void UpdateBiomeSettings()
     {
-        string path = "Biomes/" + terrestrialType.ToString();
+        string path = "Biomes/Standard/" + terrestrialType.ToString();
 
         if (path != settingsPath || biomeColorSettings == null)
         {

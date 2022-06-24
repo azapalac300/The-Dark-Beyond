@@ -12,6 +12,8 @@ public class PlanetGenerator : MonoBehaviour {
     public float vertexRadius;
     public bool generatePlanet;
 
+    public TerrestrialPlanetType selectedType;
+
 
     private PlanetSkeleton _baseSkeleton;
 
@@ -23,7 +25,7 @@ public class PlanetGenerator : MonoBehaviour {
     public void GenerateTerrestrialPlanet()
     {
         var terrestrialPlanet = GenerateTerrestrialPlanetObject().GetComponent<TerrestrialPlanet>();
-
+        terrestrialPlanet.terrestrialType = selectedType;
         terrestrialPlanet.Initialize();
     }
 
@@ -43,7 +45,7 @@ public class PlanetGenerator : MonoBehaviour {
         PlanetSkeleton p = _baseSkeleton.Copy();
         TerrestrialPlanet planet = p.planetObject.GetComponent<TerrestrialPlanet>();
         planet.Type = PlanetType.Terrestrial;
-
+        planet.terrestrialType = TerrestrialPlanetType.Random;
         planet.skeleton = p;
 
         return p.planetObject;
