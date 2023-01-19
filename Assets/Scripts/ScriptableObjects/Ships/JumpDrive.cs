@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Jump Drive", menuName = "Modules/ShipModules/Jump Drive")]
 public class JumpDrive : ShipModule
 {
     public override ShipModuleType Type { get { return ShipModuleType.JumpDrive; } }
