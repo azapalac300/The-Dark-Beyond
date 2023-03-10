@@ -24,7 +24,7 @@ public class Explosion : MonoBehaviour
         particleSystems = new List<ParticleSystem>();
         particleSystems.AddRange(GetComponentsInChildren<ParticleSystem>());
 
-        Debug.Log("Particle Systems Count: " + particleSystems.Count);
+        //Debug.Log("Particle Systems Count: " + particleSystems.Count);
     }
 
     // Update is called once per frame

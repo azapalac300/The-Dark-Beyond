@@ -69,11 +69,14 @@ public class TerrestrialPlanet : MonoBehaviour, Planet {
 
     private string settingsPath;
 
+
     [SerializeField]
     public PlanetType type; //For display purposes only
     public TerrestrialPlanetType terrestrialType;
 
     public MinMax terrainMinMax;
+
+    public float squareDistance;
 
 	// Use this for initialization
 	public void Initialize () {
@@ -101,10 +104,37 @@ public class TerrestrialPlanet : MonoBehaviour, Planet {
 
         colorGenerator.UpdateElevation(terrainMinMax);
         colorGenerator.UpdateColors();
+
+        InitializeLighting();
         
         //TODO: Need to determine whether an ocean can even spawn on this planet
-        rotateSpeed = UnityEngine.Random.Range(0f, 10f);
+        rotateSpeed = UnityEngine.Random.Range(-10f, 10f);
+       
+    }
 
+    public void InitializeLighting()
+    {
+        //Set light color
+        StarlightColors starlightColors = (StarlightColors)Resources.Load("StarlightColors");
+        switch (parentStar.color)
+        {
+            case StarColor.Blue:
+                planetMeshRenderer.material.SetColor("_StarLightColor", starlightColors.blueStarColor);
+                break;
+
+            case StarColor.Red:
+                planetMeshRenderer.material.SetColor("_StarLightColor", starlightColors.redStarColor);
+                break;
+
+            case StarColor.Yellow:
+                planetMeshRenderer.material.SetColor("_StarLightColor", starlightColors.yellowStarColor);
+                break;
+        }
+
+        //Set light intensity
+        squareDistance = distanceFromStar;
+        float inverseSquare = parentStar.Intensity / (distanceFromStar * distanceFromStar);
+        planetMeshRenderer.material.SetFloat("_StarLightIntensity", inverseSquare);
     }
 
     public void UpdateBiomeSettings()
@@ -122,10 +152,27 @@ public class TerrestrialPlanet : MonoBehaviour, Planet {
     // Update is called once per frame
     void Update() {
         
-        if (EditorApplication.isPlaying || EditorApplication.isPaused) return;
+        //if (EditorApplication.isPlaying || EditorApplication.isPaused) return;
         if (planetMeshRenderer == null) planetMeshRenderer = GetComponent<MeshRenderer>();
 
+
+        UpdatePlanetLighting(ref planetMeshRenderer);
+
+       // transform.Rotate(Time.deltaTime*Vector3.up*rotateSpeed);
     }
+
+    void UpdatePlanetLighting(ref MeshRenderer planetMeshRenderer)
+    {
+        //Update the direction of the light to always point at the star
+        Vector3 diff = parentStar.transform.position - transform.position;
+        diff = diff.normalized;
+        planetMeshRenderer.material.SetVector("_StarLightDirection", diff);
+
+
+        Debug.DrawRay(transform.position, diff*1000f, Color.magenta);
+
+    }
+
 
     public void Land()
     {

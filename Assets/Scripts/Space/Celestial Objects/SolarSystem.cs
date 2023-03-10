@@ -124,11 +124,12 @@ public class SolarSystem : MonoBehaviour {
             }
 
 
-            planet.Initialize();
+            
             planetObject.transform.parent = transform;
             planetObject.transform.position = planetSpawnPos;
 
             planet.distanceFromStar = Vector3.Distance(planetObject.transform.position, transform.position);
+            planet.Initialize();
 
             planets.Add(planet);
             planetObjects.Add(planetObject);

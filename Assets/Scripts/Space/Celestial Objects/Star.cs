@@ -21,14 +21,20 @@ public class Star: MonoBehaviour, SpaceObject {
     public StarColor color;
     public float radius;
     public PlanetFactory planetFactory;
-    
-    public float Heat { get { return (int)color * radius; } } //Min heat is radius/2 (Red dwarf). Max heat is radius*6 (Blue giant).
+
+    private const float baseStarIntensity = 5000;
+
+    public float Intensity { get { return (int)color * radius * baseStarIntensity; } } //Min intensity is radius/2 (Red dwarf). Max intensity is radius*6 (Blue giant). 
+
+    [SerializeField]
+    private float displayIntensity;
+
     public Material blue, yellow, red;
     public Color blueLight, yellowLight, redLight;
     private static StarColor[] colorDistribtion { get { return new StarColor[]{
+        StarColor.Blue,
         StarColor.Yellow,
         StarColor.Yellow,
-        StarColor.Red,
         StarColor.Red,
         StarColor.Red
     }; } }
@@ -64,6 +70,8 @@ public class Star: MonoBehaviour, SpaceObject {
                 m.material = red;
                 break;
         }
+
+        displayIntensity = Intensity;
 
         if(GameData.Chance(1f))
         {
